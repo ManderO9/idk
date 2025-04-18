@@ -1,7 +1,34 @@
 ﻿@page "/"
+@inject IAIService aiService
+
+<h5>Write Your Question:</h5>
+
+<textarea class="w-100" rows="5" style="resize:none;"
+@bind="ChatBotQuery"
+@bind:event="oninput"
+@onkeydown='async (e) =>
+    {
+    if(e.Code == "Enter" && e.CtrlKey)
+        await SendRequestAsync();
+    }'>
+
+</textarea>
+
+<div class="text-end pt-3">
+    @if (SendingRequest)
+    {
+        <sl-button @onclick="SendRequestAsync" variant="primary" loading>Send</sl-button>
+    }
+    else
+    {
+        <sl-button @onclick="SendRequestAsync" variant="primary">Send</sl-button>
+    }
+</div>
+
+<h5 class="mt-5 mb-3">Chatbot Response:</h5>
+<div class="text-end">
+    <sl-copy-button value="@ChatBotResponse"></sl-copy-button>
+</div>
+<p style="white-space: pre-wrap;">@ChatBotResponse</p>
 
 
-<p>Add some code that will show articles and their summary</p>
-<p>Add some code that will allow you to chat with gemini directly</p>
-
-<p>go to details page: <a href="./details">Details</a></p>

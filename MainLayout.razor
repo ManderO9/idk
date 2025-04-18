@@ -1,5 +1,32 @@
 ﻿@inherits LayoutComponentBase
 
-<main>
-    @Body
+@* @if(!SidebarVisible)
+{
+    <div>
+
+        <sl-button variant="primary" class="position-fixed start-0 top-0 m-4" @onclick="() => SidebarVisible = true">
+            <sl-icon slot="prefix" name="gear"></sl-icon>
+            Nav
+        </sl-button>
+    </div>
+}
+ *@
+<main class="d-flex">
+    <nav class="border-end vh-100 shadow px-3 py-5" style="width: 250px;">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="./">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./settings">Settings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./articles">Articles</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="flex-grow-1 px-4 py-5 vh-100 overflow-auto" style="width:calc(100vw - 250px);">
+        @Body
+    </div>
 </main>

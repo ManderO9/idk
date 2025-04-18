@@ -1,0 +1,5 @@
+﻿@page "/settings"
+@inject IAIService aiService
+
+<div>Gemini key:</div>
+<input @bind-value="aiService.ApiKey">
