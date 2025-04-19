@@ -1,9 +1,13 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html><html lang="en" class="sl-theme-dark" data-bs-theme="dark"><head>
     <meta charset="utf-8"/>
     <title>IDK</title>
     <base href="/idk/"/>
     <link href="css/app.css" rel="stylesheet"/>
-    
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/dark.css"/>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
+
     <!-- If you add any scoped CSS files, uncomment the following to load them
     <link href="IDK.styles.css" rel="stylesheet" /> -->
 
@@ -16,10 +20,19 @@
     <div id="app">Loading...
 <!-- %%-PRERENDERING-BEGIN-%% -->
 <div style="opacity: 0; position: fixed; z-index: -1; top: 0; left: 0; bottom: 0; right: 0;">
-    <main><p>Add some code that will show articles and their summary</p>
-<p>Add some code that will allow you to chat with gemini directly</p>
+    <main class="d-flex"><nav class="border-end vh-100 shadow px-3 py-5" style="width: 250px;"><ul class="nav flex-column"><li class="nav-item"><a class="nav-link active" href="./">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="./settings">Settings</a></li>
+            <li class="nav-item"><a class="nav-link" href="./articles">Articles</a></li></ul></nav>
 
-<p>go to details page: <a href="./details">Details</a></p></main>
+    <div class="flex-grow-1 px-4 py-5 vh-100 overflow-auto" style="width:calc(100vw - 250px);"><h5>Write Your Question:</h5>
+
+<textarea class="w-100" rows="5" style="resize:none;"></textarea>
+
+<div class="text-end pt-3"><sl-button variant="primary">Send</sl-button></div>
+
+<h5 class="mt-5 mb-3">Chatbot Response:</h5>
+<div class="text-end"><sl-copy-button value=""></sl-copy-button></div>
+<p style="white-space: pre-wrap;"></p></div></main>
         <blazor-focus-on-navigate selector="h1"></blazor-focus-on-navigate>
 
 </div>
