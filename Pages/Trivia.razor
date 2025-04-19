@@ -1,0 +1,26 @@
+﻿@page "/trivia"
+@inject IAIService aiService
+
+
+<h3>Trivia</h3>
+
+<h5 class="mt-5 mb-3">Chatbot Question:</h5>
+<p style="white-space: pre-wrap;">@Question.Question</p>
+
+
+<h5 class="mt-5 mb-3">Options:</h5>
+
+<div>
+    @foreach(var option in Question.Options)
+    {
+        <sl-button class="me-2" size="medium" pill @onclick="() => OptionSelected = true" variant='@(OptionSelected  ? option == Question.CorrectAnswer ? "success" : "danger" : "default")' outline>@option</sl-button>
+    }
+    @if(SendingRequest)
+    {
+        <sl-button class="ms-4" @onclick="NewQuestionAsync" variant="primary">New Question</sl-button>
+    }
+    else
+    {
+        <sl-button class="ms-4" @onclick="NewQuestionAsync" variant="primary">New Question</sl-button>
+    }
+</div>
